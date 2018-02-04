@@ -52,7 +52,8 @@ var delaysqs = function (sqs, queueUrl, messageCallback, errorCallback) {
 
     var _deleteMessage = function (receiptHandle, next) {
         sqs.deleteMessage({
-            ReceiptHandle: receiptHandle
+            ReceiptHandle: receiptHandle,
+            QueueUrl: queueUrl            
         }, function (err, data) {
             if (err) {
                 _notifyErrorCallback(err);
@@ -171,5 +172,3 @@ var delaysqs = function (sqs, queueUrl, messageCallback, errorCallback) {
 };
 
 module.exports = delaysqs;
-
-
